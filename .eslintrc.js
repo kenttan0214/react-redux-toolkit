@@ -14,6 +14,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:jest/recommended',
     'plugin:import/warnings',
+    'plugin:tailwindcss/recommended',
     'plugin:testing-library/react',
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
@@ -28,6 +29,7 @@ module.exports = {
   },
   plugins: [
     'import', // eslint-plugin-import plugin. https://www.npmjs.com/package/eslint-plugin-import
+    'tailwindcss',
   ],
   root: true, // For configuration cascading.
   rules: {

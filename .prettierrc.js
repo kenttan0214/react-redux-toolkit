@@ -6,4 +6,6 @@ module.exports = {
   tabWidth: 2,
   jsxSingleQuote: true,
   bracketSpacing: true,
+  plugins: [require('prettier-plugin-tailwindcss')],
+  tailwindConfig: './tailwind.config.js',
 };
