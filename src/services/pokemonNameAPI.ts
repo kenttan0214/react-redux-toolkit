@@ -34,11 +34,11 @@ export const pokemonNamesAPI = demoAPI.injectEndpoints({
     // query with custom reducer side effect
     getNamesByPage: build.query<PokemonNamesResponse, RequestParams>({
       query: (requestParams) => getPath(requestParams),
-      async onQueryStarted(_args, { dispatch, queryFulfilled, requestId }) {
+      async onQueryStarted(args, { dispatch, queryFulfilled, requestId }) {
         try {
           dispatch(updateIsFetching({ requestId }));
           const { data } = await queryFulfilled;
-          dispatch(updateNameList({ requestId, data }));
+          dispatch(updateNameList({ requestId, data, args }));
         } catch (error) {
           dispatch(updateIsError({ requestId }));
         }
@@ -47,4 +47,4 @@ export const pokemonNamesAPI = demoAPI.injectEndpoints({
   }),
 });
 
-export const { useGetNamesQuery } = pokemonNamesAPI;
+export const { useGetNamesQuery, useLazyGetNamesByPageQuery } = pokemonNamesAPI;

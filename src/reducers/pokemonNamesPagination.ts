@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PokemonNamesResponse } from '../services/pokemonNameAPI';
+import { PokemonNamesResponse, RequestParams } from '../services/pokemonNameAPI';
 
 interface InitialState extends PokemonNamesResponse {
   requestId: string;
   isSuccess: boolean;
   isError: boolean;
   isFetching: boolean;
+  limit: number;
+  offset: number;
 }
 
 const initialState: InitialState = {
@@ -17,19 +19,25 @@ const initialState: InitialState = {
   isSuccess: false,
   isError: false,
   isFetching: false,
+  limit: 20,
+  offset: 0,
 };
 
 const { reducer, actions } = createSlice({
   name: 'pokemonNamesPagination',
   initialState,
   reducers: {
-    updateNameList: (state, { payload }: PayloadAction<{ requestId: string; data: PokemonNamesResponse }>) => {
-      const { requestId, data } = payload;
+    updateNameList: (
+      state,
+      { payload }: PayloadAction<{ requestId: string; data: PokemonNamesResponse; args: RequestParams }>,
+    ) => {
+      const { requestId, data, args } = payload;
 
       if (state.requestId === requestId) {
         return {
           ...state,
           ...data,
+          ...args,
           results: [...state.results, ...data.results],
           isSuccess: true,
           isError: false,

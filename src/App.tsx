@@ -1,11 +1,12 @@
 import React from 'react';
-import PokemonList from './components/PokemonList';
+import PokemonListPagination from './components/PokemonListPagination.ts';
+// import PokemonList from './components/PokemonList';
 
 function App() {
   return (
     <>
       <div className='mx-auto mt-10 w-1/2'>
-        <PokemonList />
+        <PokemonListPagination />
       </div>
     </>
   );
