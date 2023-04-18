@@ -1,6 +1,14 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+RTK Query is a great choice for managing API requests in a Redux application, but it currently does not provide a built-in pagination feature. However, with some customization, we can use RTK Query to achieve pagination and infinite scrolling.
+
+In order to implement infinite scrolling and pagination using RTK Query, we need to fetch one page of data at a time and store the data in the Redux state. We can then use this data to render the list of posts and load more data as the user scrolls down the page.
+
+To achieve this, we use the `onQueryStarted` option provided by RTK Query. This option allows us to trigger a side effect whenever a query is started. In our case, we use this option to dispatch an action to store the current page of data in the Redux state.
+
+When the API response is received, RTK Query will automatically update the Redux state with the response data. If we're fetching the first page of data, the response data will replace any existing data in the Redux state. If we're fetching a subsequent page, the response data will be appended to the existing data.
+
+By using onQueryStarted and storing the data in the Redux state, we can easily implement infinite scrolling and pagination in our React app.
 
 ## Available Scripts
 
