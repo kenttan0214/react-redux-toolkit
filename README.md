@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# React Infinite Scroll with RTK Query and Redux Toolkit
 
 RTK Query is a great choice for managing API requests in a Redux application, but it currently does not provide a built-in pagination feature. However, with some customization, we can use RTK Query to achieve pagination and infinite scrolling.
 
